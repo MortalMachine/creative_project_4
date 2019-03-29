@@ -1,3 +1,3 @@
-# Creative Project 3
+# Creative Project 4
 
-I built upon my previous work on Creative Project 2 by adding more Youtube videos (on the Shows page) that can be looked at by using first, previous, next, and last buttons implemented using Vue. 
+I built upon my previous work in Creative Project 3 by adding a "messaging" feature in the Contact tab of the site. Entering a name and message and hitting Submit sends the input text to the database. 
