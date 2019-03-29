@@ -1,0 +1,11 @@
+{
+  "name": "cp4",
+  "version": "1.0.0",
+  "description": "I built upon my previous work on Creative Project 2 by adding more Youtube videos (on the Shows page) that can be looked at by using first, previous, next, and last buttons implemented using Vue.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

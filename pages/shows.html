@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="/css/login.css" />
+		<title id="pageTitle">Shows</title>
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand strokeme" href="/index.html"><h3 class="logo">Shay</h3><p class="logo">Comix</p></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div id="login" @keydown.esc="closeForm">
+				    <ul class="navbar-nav ml-auto">
+					    <li class="nav-item active">
+						    <a class="nav-link" href="/index.html">Home<span class="sr-only">(current)</span></a>
+					    </li>
+					    <li class="nav-item">
+						    <a class="nav-link" href="/pages/about.html">About</a>
+					    </li>
+					    <li class="nav-item" v-show="user">
+						    <a class="nav-link" href="/pages/comics.html">Comics</a>
+					    </li>
+					    <li class="nav-item" v-show="user">
+						    <a class="nav-link" href="/pages/shows.html">Shows</a>
+					    </li>
+					    <li class="nav-item">
+						    <a class="nav-link" href="/pages/contact.html">Contact</a>
+					    </li>
+					    <li class="nav-item">
+                            <p class="nav-link" v-if="user">Welcome {{user.username}}<br><a href="#" @click="logout">Logout</a></p>
+                            <p class="nav-link" v-else><a href="#" @click="toggleForm">Register or Login</a></p>
+					    </li>
+				    </ul>
+                </div>
+			</div>
+		</nav>
+
+		<div class="strokeme" id="pagename">
+			<h1>Shows</h1>
+		</div>
+
+        <div id="video">
+            <p>
+                <button v-on:click="firstVideo">&lt First</button>
+                <button v-on:click="previousVideo">&lt&lt Previous</button>
+                <button v-on:click="nextVideo">Next &gt&gt</button>
+                <button v-on:click="lastVideo">Last &gt</button>
+            </p>
+            <div class="iframe">
+                <iframe width="560" height="315" v-bind:src="current.src" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <script src="https://apis.google.com/js/platform.js"></script>
+
+        <div class="g-ytsubscribe" data-channelid="UCarLqCffSR9lZPQdZUj3v5g" data-layout="full" data-count="default"></div>
+
+
+    <script type="text/javascript">
+      function handleClientLoad() {
+        // Loads the client library and the auth2 library together for efficiency.
+        // Loading the auth2 library is optional here since `gapi.client.init` function will load
+        // it if not already loaded. Loading it upfront can save one network request.
+        gapi.load('client:auth2', initClient);
+      }
+
+      function initClient() {
+        // Initialize the client with API key and People API, and initialize OAuth with an
+        // OAuth 2.0 client ID and scopes (space delimited string) to request access.
+        gapi.client.init({
+            apiKey: 'AIzaSyCOn57-XzQo_4c5WdMcPgS7_wt0ZIThnZE',
+            //discoveryDocs: ["https://www.googleapis.com/youtube/v3/videos/rate?id=3TFdE_pSusw&rating=like&key={AIzaSyCOn57-XzQo_4c5WdMcPgS7_wt0ZIThnZE}"],
+            clientId: '503462251914-h50m087tr5ikjpd6cifcffptiuu0adtc.apps.googleusercontent.com',
+            scope: 'https://www.googleapis.com/auth/youtube',
+            scope: 'https://www.googleapis.com/auth/youtube.force-ssl',
+            scope: 'https://www.googleapis.com/auth/youtube.force-ssl',
+        }).then(function () {
+          // Listen for sign-in state changes.
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+          // Handle the initial sign-in state.
+          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+        });
+      }
+
+      function updateSigninStatus(isSignedIn) {
+        // When signin status changes, this function is called.
+        // If the signin status is changed to signedIn, we make an API call.
+        if (isSignedIn) {
+            document.getElementById("signin-button").addEventListener("click", function(event) {
+                event.preventDefault();
+                let results1 = '<button id="like-button" onclick="handleLikeClick()">Like</button>';
+                document.getElementById("like-button_space").innerHTML = results1;
+                let results2 = '<button id="dislike-button" onclick="handleLikeClick()">Disike</button>';
+                document.getElementById("dislike-button_space").innerHTML = results2;
+            });
+        }
+      }
+
+      function handleSignInClick(event) {
+        // Ideally the button should only show up after gapi.client.init finishes, so that this
+        // handler won't be called before OAuth is initialized.
+        gapi.auth2.getAuthInstance().signIn();
+      }
+
+      function handleSignOutClick(event) {
+        gapi.auth2.getAuthInstance().signOut();
+      }
+
+      function handleLikeClick(event) {
+        // Ideally the button should only show up after gapi.client.init finishes, so that this
+        // handler won't be called before OAuth is initialized.
+        gapi.client.youtube.videos.rate({
+            'like': 'https://www.googleapis.com/youtube/v3/videos/rate?id=3TFdE_pSusw&rating=like&key={AIzaSyCOn57-XzQo_4c5WdMcPgS7_wt0ZIThnZE}'
+        }).then(function(response) {
+          
+        }, function(reason) {
+          
+        });
+
+      }
+
+      function handleDislikeClick(event) {
+        gapi.client.youtube.videos.rate({
+            'dislike': 'https://www.googleapis.com/youtube/v3/videos/rate?id=3TFdE_pSusw&rating=dislike&key={AIzaSyCOn57-XzQo_4c5WdMcPgS7_wt0ZIThnZE}'
+        }).then(function(response) {
+          
+        }, function(reason) {
+          
+        });
+
+      }
+    </script>
+
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+    <button id="signin-button" onclick="handleSignInClick()">Sign In</button>
+    <button id="signout-button" onclick="handleSignOutClick()">Sign Out</button>
+    <button id="like-button" onclick="handleLikeClick()">Like</button>
+    <button id="dislike-button" onclick="handleLikeClick()">Disike</button>
+
+
+
+		<footer class="index-footer">
+			<p>GitHub Repository link <a href="https://github.com/MortalMachine/creative_project_3.git">
+				"https://github.com/MortalMachine/creative_project_3.git"</a></p>
+		</footer>
+
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+
+        <script text="type/javascript" src="/scripts/video.js"></script>
+        <script text="type/javascript" src="/scripts/login.js"></script>
+
+	</body>
+
+</html>

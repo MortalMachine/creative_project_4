@@ -1,0 +1,224 @@
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav {
+	color: #00b3ff;
+	background-color: #ffc2cc;
+	content: 100%;
+}
+
+.nav-link:hover {
+	color: #ffc2cc !important;
+	background-color: #00b3ff;
+	content: 100%;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: #00b3ff;
+}
+
+.bg-light {
+	background-color: #ffc2cc !important;
+	padding-bottom: 1%;
+	padding-top: 1%;
+}
+
+.navbar-brand {
+	background-color: #00b3ff;
+	border-style: groove;
+	border-width: 1px;
+	border-color: #22767f;
+	padding: 10px;
+}
+
+.logo {
+    padding: 0%;
+    margin: 0%;
+    text-align: center;
+    color: #ffc2cc;
+}
+
+.container {
+	display: grid;
+	grid-row-gap: 50px;
+    grid-column-gap: 5%;
+	margin-top: 75px;
+}
+
+.container-fluid {
+	width: 100%;
+}
+
+.navbar-nav a{
+    font-size: 1.5em !important;
+}
+
+body {
+	background-color: #efeed7;
+}
+
+h1 {
+	/*text-align: left;
+	/*color: #2d91eb;
+	margin-left: 25px;
+	margin-top: 25px;
+	margin-bottom: 50px;
+	font-family: serif;
+	font-style: oblique;
+	border-bottom-color: skyblue;
+	border-bottom-style: ridge;
+	border-bottom-width: 5px;*/
+}
+
+.strokeme
+{
+	color: #ffc2cc;
+	text-shadow:
+	-1px -1px 0 gray,
+	1px -1px 0 gray,
+	-1px 1px 0 gray,
+	1px 1px 0 gray;
+}
+
+#Home {
+	text-align: center;
+	/*color: #2d91eb;*/
+	margin-left: 25px;
+	margin-top: 25px;
+	margin-bottom: 50px;
+	font-family: serif;
+	font-style: oblique;
+	border-bottom-color: skyblue;
+	border-bottom-style: ridge;
+	border-bottom-width: 5px;
+}
+#pagename {
+    padding: 10px;
+    font-size: 1.25em;
+}
+
+#like_button_space {
+    content: 5px;
+    padding: 5px;
+}
+
+#dislike_button_space {
+    content: 5px;
+    padding: 5px;
+}
+
+h2, p {
+	text-align: center;
+	color: #2d91eb;
+	padding-bottom: 5px;
+}
+
+h2 {
+	padding-bottom: 2em;
+}
+
+h3, h4 {
+	text-align: center;
+	color: gray;
+}
+
+h4 {
+	padding-bottom: 1%;
+	margin-bottom: 5%;
+	border-bottom-style: solid;
+	border-bottom-color: skyblue;
+	border-bottom-width: 2px;
+}
+
+img {
+	width: 100%;
+}
+
+iframe {
+
+}
+
+.iframe {
+    text-align: center;
+    width: 100%;
+}
+
+.left-image {
+	float: left;
+	width: 100%;
+	margin-left: 2%;
+}
+
+.text {
+    font-size: 1.25em;
+    width: 100%;
+}
+
+.right-image {
+	float: right;
+	width: 100%;
+	margin-right: 2%;
+}
+
+/* Box-sizing reset: //w3bits.com/?p=3225 */
+html {
+	box-sizing: border-box;
+}
+
+*,
+	*:before,
+	*:after {
+		box-sizing: border-box;
+	}
+
+	/* The Masonry Container */
+	.masonry {
+		margin: 2em;
+		max-width: 2048px;
+		column-gap: 1.5em;
+	}
+
+	/* The Masonry Brick */
+	.item {
+		background: #fff;
+		padding: 0em;
+		margin: 0 0 1.5em;
+	}
+
+	/* Masonry on large screens */
+	@media only screen and (min-width: 1024px) {
+		.masonry {
+			column-count: 4;
+		}
+	}
+
+	/* Masonry on medium-sized screens */
+	@media only screen and (max-width: 1023px) and (min-width: 768px) {
+		.masonry {
+			column-count: 3;
+		}
+	}
+
+	/* Masonry on small screens */
+	@media only screen and (max-width: 767px) and (min-width: 540px) {
+		.masonry {
+			column-count: 2;
+		}
+	}
+
+	footer {
+		display: block;
+	}
+
+	.index-footer {
+		margin-top: 5%;
+	}
+
+	.about-footer {
+		margin-top: 12%;
+	}
+
+	/* Image Grid */
+	.three-panel-grid {
+	display: grid;
+	grid-template: auto auto auto auto auto / 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+	}
