@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const message = new Message({
     name: req.body.name,
-    message: req.body.message
+    message: req.body.message,
   });
   try {
     await message.save();

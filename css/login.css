@@ -100,12 +100,12 @@
 }
 
 /* Message */
-/*
+
 .message {
   display: flex;
 }
-*/
-.problem {
+
+.message-two {
   flex: 5;
 }
 

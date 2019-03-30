@@ -94,11 +94,23 @@
 		        <img class="right-image" src="/images/reedflower101_by_shaybayme_dc4ov1u.jpg" alt="Jordan Loves Shay by Shaybayme">
             </div>
         </section>
+	      <div v-for="message in messages">
+	        <hr>
+        	<div class="message">
+	          <div class="message-two">
+	            <p>{{message.message}}</p>
+	            <p><i>-- {{message.name}}</i></p>
+	          </div>
+	          <div class="delete">
+	            <button @click="deleteMessage(message)" class="delete">Delete</button>
+	          </div>
+	        </div>
+	      </div>
     </div>
 
 		<footer class="index-footer">
-			<p>GitHub Repository link <a href="https://github.com/MortalMachine/creative_project_3.git">
-				"https://github.com/MortalMachine/creative_project_3.git"</a></p>
+			<p>GitHub Repository link <a href="https://github.com/MortalMachine/creative_project_4.git">
+				"https://github.com/MortalMachine/creative_project_4.git"</a></p>
 		</footer>
 
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
